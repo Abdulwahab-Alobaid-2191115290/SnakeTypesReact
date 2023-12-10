@@ -1,13 +1,18 @@
 import "../assets/css/Login.css";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { UserContext } from "./App";
+import defaultIcon from "../assets/img/profile-icon.jpg";
 
 const Register = () => {
+  const { setUser } = useContext(UserContext);
+
   const [username, setUsername] = useState("");
   const [isUsernameValid, setIsUsernameValid] = useState(false);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isPasswordValid, setIsPasswordValid] = useState(false);
   const [isConfirmPasswordValid, setIsConfirmPasswordValid] = useState(false);
+  const [registrationSuccess, setRegistrationSuccess] = useState(false);
 
   const handleUsername = (e) => {
     const value = e.target.value;
@@ -46,21 +51,40 @@ const Register = () => {
           username,
           password,
           avg_wpm: 0,
+          img: defaultIcon,
         }),
       })
         .then((res) => {
           if (!res.ok) {
-            throw Error("couldn't fetch user");
+            throw Error("Couldn't fetch user");
           }
-          //parse the json response
-          console.log("Registration successful");
           return res.json();
+        })
+        .then((user) => {
+          console.log("Registration successful");
+          setUser(user);
+          setRegistrationSuccess(true);
         })
         .catch((err) => {
           console.log("Error: " + err.message);
         });
     }
   };
+
+  const handleLogout = () => {
+    setUser(null);
+    console.log("You have logged out");
+  };
+
+  if (registrationSuccess) {
+    return (
+      <div>
+        <h2>You are logged in!</h2>
+        <p>Welcome, {username}!</p>
+        <button onClick={handleLogout}>Logout</button>
+      </div>
+    );
+  }
 
   return (
     <div>
