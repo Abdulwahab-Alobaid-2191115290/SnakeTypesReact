@@ -6,7 +6,6 @@ import { UserContext } from "./App";
 const Login = () => {
   const { user, setUser } = useContext(UserContext);
 
-  //login state variables
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [error, setError] = useState(null);
@@ -40,6 +39,23 @@ const Login = () => {
         setError(err.message);
       });
   };
+
+  const handleLogout = () => {
+    setUser(null);
+    console.log("You have logged out");
+  };
+
+  if (user) {
+    return (
+      <div>
+        <h2>You are logged in!</h2>
+        <p>Welcome, {user.username}!</p>
+        <br />
+        <br />
+        <button onClick={handleLogout}>Logout</button>
+      </div>
+    );
+  }
 
   return (
     <div>

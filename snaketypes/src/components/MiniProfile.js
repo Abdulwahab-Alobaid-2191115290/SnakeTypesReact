@@ -18,9 +18,9 @@ const MiniProfile = () => {
             className="rounded-circle"
             alt="Avatar"
           />
-          <Card.Title>{user ? user.username : "Username"}</Card.Title>
+          <Card.Title>{user ? user.username : "Guest"}</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">
-            {user ? `Average ${user.avg_wpm} wpm` : "Average 50 wpm"}
+            {user ? `Average ${user.avg_wpm} wpm` : ""}
           </Card.Subtitle>
           {user ? (
             <ul id="profile-nav">

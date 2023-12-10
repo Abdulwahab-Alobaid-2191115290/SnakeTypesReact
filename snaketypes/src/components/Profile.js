@@ -29,9 +29,9 @@ const Profile = () => {
           className="rounded-circle"
           style={{ display: "flex", maxWidth: "7%" }}
         />
-        <Card.Title>{user ? user.username : "Username"}</Card.Title>
+        <Card.Title>{user ? user.username : "Guest"}</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">
-          {user ? `Average ${user.avg_wpm} wpm` : "average 50 wpm"}
+          {user ? `Average ${user.avg_wpm} wpm` : ""}
         </Card.Subtitle>
         {user ? (
           <Card.Text>Nice to see you again {user.username} ^_^</Card.Text>
