@@ -45,7 +45,7 @@ const Register = () => {
         body: JSON.stringify({
           username,
           password,
-          //avg_wpm,
+          avg_wpm: 0,
         }),
       })
         .then((res) => {

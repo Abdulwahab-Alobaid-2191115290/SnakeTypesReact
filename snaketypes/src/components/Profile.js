@@ -1,12 +1,16 @@
-import React from "react";
 import Card from "react-bootstrap/Card";
 import MiniChart from "./MiniChart";
 import MiniProfile from "./MiniProfile";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import React, { useContext } from "react";
+import { UserContext } from "./App";
+import defaultIcon from "../assets/img/profile-icon.jpg";
 
 const Profile = () => {
+  const { user } = useContext(UserContext);
+
   return (
     <>
       <div
@@ -20,19 +24,23 @@ const Profile = () => {
       >
         <img
           id="user-avatar"
-          src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
-          className="rounded-circle"
+          src={user ? user.img : defaultIcon}
           alt="Avatar"
+          className="rounded-circle"
           style={{ display: "flex", maxWidth: "7%" }}
         />
-        <Card.Title>{"Username"}</Card.Title>
+        <Card.Title>{user ? user.username : "Username"}</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">
-          {"average 50 wpm"}
+          {user ? `Average ${user.avg_wpm} wpm` : "average 50 wpm"}
         </Card.Subtitle>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
+        {user ? (
+          <Card.Text>Nice to see you again {user.username} ^_^</Card.Text>
+        ) : (
+          <Card.Text>
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </Card.Text>
+        )}{" "}
         <Card.Link href="#">View Stats</Card.Link>
         <Card.Link href="#">Edit Profile</Card.Link>
       </div>

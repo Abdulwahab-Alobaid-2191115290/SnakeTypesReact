@@ -1,8 +1,11 @@
 import "../assets/css/Login.css";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "./App";
 
 const Login = () => {
+  const { user, setUser } = useContext(UserContext);
+
   //login state variables
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
@@ -16,18 +19,18 @@ const Login = () => {
         if (!res.ok) {
           throw Error("couldn't fetch user");
         }
-        //parse the json response
         return res.json();
       })
       .then((users) => {
-        const user = users.find(
+        const foundUser = users.find(
           (user) =>
             user.username === loginUsername && user.password === loginPassword
         );
 
-        if (user) {
+        if (foundUser) {
           console.log("You have an account");
           setError(null);
+          setUser(foundUser);
         } else {
           throw Error("username or password are incorrect");
         }

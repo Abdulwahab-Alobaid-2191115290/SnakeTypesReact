@@ -5,14 +5,14 @@
       "username": "John Doe",
       "password": "abc123@",
       "avg_wpm": 60,
-      "img": "../assets/db/john-doe.jfif"
+      "img": "https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
     },
     {
       "id": 2,
-      "username": "jjj kkk",
+      "username": "emy",
       "password": "a1@",
       "avg_wpm": 100,
-      "img": "../assets/db/john-doe.jfif"
+      "img": "https://mdbcdn.b-cdn.net/img/new/avatars/4.webp"
     }
   ],
   "words": [
