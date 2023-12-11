@@ -28,7 +28,7 @@ const MiniProfile = () => {
                 <Card.Link href="#">View Stats</Card.Link>
               </li>
               <li>
-                <Card.Link href="#">Edit Profile</Card.Link>
+                <Card.Link href="#">View Profile</Card.Link>
               </li>
             </ul>
           ) : null}

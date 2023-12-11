@@ -13,14 +13,9 @@
       "password": "a1@",
       "avg_wpm": 100,
       "img": "https://mdbcdn.b-cdn.net/img/new/avatars/4.webp"
-    },
-    {
-      "username": "mmmm",
-      "password": "m9&",
-      "avg_wpm": 0,
-      "id": 3
     }
   ],
+
   "words": [
     {
       "wordText": "apple",
