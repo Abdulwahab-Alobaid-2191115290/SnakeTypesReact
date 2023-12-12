@@ -1,63 +1,65 @@
-import React, { useState, useEffect } from 'react';
-import { Line } from 'react-chartjs-2';
-import { Chart as ChartJS } from 'chart.js/auto'
-import { Chart }            from 'react-chartjs-2'
-import '../assets/css/MiniChart.css'
+import React, { useState, useEffect } from "react";
+import { Line } from "react-chartjs-2";
+import { Chart as ChartJS } from "chart.js/auto";
+import { Chart } from "react-chartjs-2";
+import "../assets/css/MiniChart.css";
 
-const MiniChart = () => {
+const MiniChart = ({ monthlyStats }) => {
   const [data, setData] = useState({
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    labels: monthlyStats ? monthlyStats.map((stat) => stat.month) : [],
+    //labels: ["January", "February", "March", "April", "May", "June", "July"],
     datasets: [
       {
-        label: 'My First dataset',
+        label: "my scores",
         fill: false,
         lineTension: 0.1,
-        backgroundColor: 'rgba(194, 116, 161, 0.5)',
-        borderColor: 'rgb(194, 116, 161)',
-        borderCapStyle: 'butt',
+        backgroundColor: "rgba(194, 116, 161, 0.5)",
+        borderColor: "rgb(194, 116, 161)",
+        borderCapStyle: "butt",
         borderDash: [],
         borderDashOffset: 0.0,
-        borderJoinStyle: 'miter',
-        pointBorderColor: 'rgba(75,192,192,1)',
-        pointBackgroundColor: '#fff',
+        borderJoinStyle: "miter",
+        pointBorderColor: "rgba(75,192,192,1)",
+        pointBackgroundColor: "#fff",
         pointBorderWidth: 1,
         pointHoverRadius: 5,
-        pointHoverBackgroundColor: 'rgba(71, 225, 167, 0.5)',
-        pointHoverBorderColor: 'rgb(71, 225, 167)',
+        pointHoverBackgroundColor: "rgba(71, 225, 167, 0.5)",
+        pointHoverBorderColor: "rgb(71, 225, 167)",
         pointHoverBorderWidth: 2,
         pointRadius: 1,
         pointHitRadius: 10,
-        data: [65, 59, 80, 81, 56, 55, 40],
+        data: monthlyStats.map((stat) => stat.wpm),
+        //data: [65, 59, 80, 81, 56, 55, 40],
       },
     ],
   });
 
-  useEffect(() => {
-    setInterval(function() {
-      var oldDataSet = data.datasets[0];
-      var newData = [];
+  //useEffect(() => {
+  //   setInterval(function () {
+  //     var oldDataSet = data.datasets[0];
+  //     var newData = [];
 
-      for (var x = 0; x < data.labels.length; x++) {
-        newData.push(Math.floor(Math.random() * 100));
-      }
+  //     for (var x = 0; x < data.labels.length; x++) {
+  //       newData.push(Math.floor(Math.random() * 100));
+  //     }
 
-      var newDataSet = {
-        ...oldDataSet,
-      };
+  //     var newDataSet = {
+  //       ...oldDataSet,
+  //     };
 
-      newDataSet.data = newData;
+  //     newDataSet.data = newData;
 
-      var newState = {
-        ...data,
-        datasets: [newDataSet],
-      };
+  //     var newState = {
+  //       ...data,
+  //       datasets: [newDataSet],
+  //     };
 
-      setData(newState);
-    }, 5000);
-  }, []);
+  //     setData(newState);
+  //   }, 5000);
+  // }, []);
 
   return (
-    <div className='MiniChart'>
+    <div className="MiniChart">
       <h3 className="mt-5">WPM Improvement</h3>
       <Line data={data} options={{ responsive: true }} />
     </div>

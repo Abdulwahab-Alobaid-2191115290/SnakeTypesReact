@@ -30,9 +30,7 @@ const Profile = () => {
           style={{ display: "flex", maxWidth: "7%" }}
         />
         <Card.Title>{user ? user.username : "Guest"}</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">
-          {user ? `Average ${user.avg_wpm} wpm` : ""}{" "}
-        </Card.Subtitle>
+        <br />
         {user ? (
           <Card.Text>Nice to see you again {user.username} ^_^</Card.Text>
         ) : (
@@ -41,19 +39,33 @@ const Profile = () => {
             bulk of the card's content.
           </Card.Text>
         )}
+        <br />
+        <Card.Subtitle className="mb-2 text-muted">
+          {user ? `Average: ${user.avg_wpm} wpm` : ""}
+        </Card.Subtitle>
+        <Card.Subtitle className="mb-2 text-muted">
+          {user ? `You Played: ${user.gamesPlayed} game` : ""}
+        </Card.Subtitle>
+        <Card.Subtitle className="mb-2 text-muted">
+          {user ? `HighestWPM: ${user.highestWPM} wpm` : ""}
+        </Card.Subtitle>
+        <br />
         <Card.Link href="#">View Stats</Card.Link>
         <Card.Link href="#">View Profile</Card.Link>
       </div>
-
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <MiniChart />
-      </div>
+      {user ? (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <MiniChart monthlyStats={user ? user.monthlyStats : []} />
+        </div>
+      ) : (
+        ""
+      )}
     </>
   );
 };

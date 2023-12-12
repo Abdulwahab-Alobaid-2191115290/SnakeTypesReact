@@ -20,8 +20,15 @@ const MiniProfile = () => {
           />
           <Card.Title>{user ? user.username : "Guest"}</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">
-            {user ? `Average ${user.avg_wpm} wpm` : ""}
+            {user ? `Average: ${user.avg_wpm} wpm` : ""}
           </Card.Subtitle>
+          <Card.Subtitle className="mb-2 text-muted">
+            {user ? `You Played: ${user.gamesPlayed} game` : ""}
+          </Card.Subtitle>
+          <Card.Subtitle className="mb-2 text-muted">
+            {user ? `HighestWPM: ${user.highestWPM} wpm` : ""}
+          </Card.Subtitle>
+
           {/* <Card.Text>
                         Some quick example text to build on the card title and make up the
                         bulk of the card's content.
